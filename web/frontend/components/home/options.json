@@ -1,0 +1,25 @@
+{
+    "layoutOptions": [
+        { "label": "Grid", "value": "Grid" },
+        { "label": "Slider", "value": "Slider" }
+    ],
+    "postSizingOptions": [
+        { "label": "Square", "value": "Square" },
+        { "label": "Tile", "value": "Tile" }
+    ],
+    "postSpacingOptions": [
+        { "label": "No Spacing", "value": "No Spacing" },
+        { "label": "Small", "value": "Small" },
+        { "label": "Medium", "value": "Medium" },
+        { "label": "Large", "value": "Large" }
+    ],
+    "postOnClickOptions": [
+        { "label": "Open Popup", "value": "Open Popup" },
+        { "label": "Go to Instagram", "value": "Go to Instagram" },
+        { "label": "Do Nothing", "value": "Do Nothing" }
+    ],
+    "configurationOptions": [
+        { "label": "Auto", "value": "Auto" },
+        { "label": "Manual", "value": "Manual" }
+    ]
+}

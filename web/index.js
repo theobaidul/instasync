@@ -7,6 +7,12 @@ import serveStatic from 'serve-static';
 import shopify from './shopify.js';
 import productCreator from './product-creator.js';
 import GDPRWebhookHandlers from './gdpr.js';
+import dbconnection from './utils/dbconnection.js';
+import userRoutes from './routes/user.js';
+import tokenRoutes from './routes/token.js';
+import optionRoutes from './routes/option.js';
+// import mediaRoutes from './routes/media.js';
+import errorHandler from './middlewares/errorHandler.js';
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT || '3000', 10);
 
@@ -16,6 +22,9 @@ const STATIC_PATH =
         : `${process.cwd()}/frontend/`;
 
 const app = express();
+
+// database connection
+dbconnection();
 
 // Set up Shopify authentication and webhook handling
 app.get(shopify.config.auth.path, shopify.auth.begin());
@@ -56,6 +65,15 @@ app.get('/api/products/create', async (_req, res) => {
     }
     res.status(status).send({ success: status === 200, error });
 });
+
+// my api's
+app.use('/api/user', userRoutes);
+app.use('/api/token', tokenRoutes);
+app.use('/api/option', optionRoutes);
+// app.use('/api/media', mediaRoutes);
+
+// my middlewares
+app.use(errorHandler);
 
 app.use(shopify.cspHeaders());
 app.use(serveStatic(STATIC_PATH, { index: false }));
