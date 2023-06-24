@@ -44,6 +44,7 @@ export default function OptionsCard({ initialOption }) {
             <Text variant="headingMd" as="h6">
                 Instagram Feed Settings
             </Text>
+            <hr />
             <Form onSubmit={submitHandler}>
                 <FormLayout>
                     <TextField

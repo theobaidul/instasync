@@ -1,9 +1,8 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 // custome base query function
-const baseQuery = async (args, _api, _extraOptions) => {
+const baseQuery = async ({ url, method, body, fetcherFn }, _api, _extraOptions) => {
     try {
-        const { url, method, body, fetcherFn } = args;
         const response = await fetcherFn(url, {
             method: method || 'GET',
             ...(body && {

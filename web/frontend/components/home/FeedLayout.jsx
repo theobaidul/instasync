@@ -1,4 +1,4 @@
-import { Frame, HorizontalStack, Layout, Loading, Page } from '@shopify/polaris';
+import { Frame, HorizontalGrid, Layout, Loading, Page } from '@shopify/polaris';
 import { FeedPreview, OptionsCard } from '../index';
 import { useAuthenticatedFetch } from '@/hooks';
 import { useGetOptionsQuery } from '../../redux/features/feedOption/feedOptionApi.js';
@@ -21,10 +21,10 @@ export default function FeedLayout() {
         content = (
             <Layout>
                 <Layout.Section>
-                    <HorizontalStack gap="5">
+                    <HorizontalGrid gap="4" columns={2}>
                         <OptionsCard initialOption={initialOption} />
                         <FeedPreview />
-                    </HorizontalStack>
+                    </HorizontalGrid>
                 </Layout.Section>
             </Layout>
         );

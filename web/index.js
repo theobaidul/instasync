@@ -3,6 +3,7 @@ import { join } from 'path';
 import { readFileSync } from 'fs';
 import express from 'express';
 import serveStatic from 'serve-static';
+import { config as dotenvConfig } from 'dotenv';
 
 import shopify from './shopify.js';
 import productCreator from './product-creator.js';
@@ -11,7 +12,7 @@ import dbconnection from './utils/dbconnection.js';
 import userRoutes from './routes/user.js';
 import tokenRoutes from './routes/token.js';
 import optionRoutes from './routes/option.js';
-// import mediaRoutes from './routes/media.js';
+import mediaRoutes from './routes/media.js';
 import errorHandler from './middlewares/errorHandler.js';
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT || '3000', 10);
@@ -22,6 +23,9 @@ const STATIC_PATH =
         : `${process.cwd()}/frontend/`;
 
 const app = express();
+
+// dotenv config
+dotenvConfig();
 
 // database connection
 dbconnection();
@@ -70,7 +74,7 @@ app.get('/api/products/create', async (_req, res) => {
 app.use('/api/user', userRoutes);
 app.use('/api/token', tokenRoutes);
 app.use('/api/option', optionRoutes);
-// app.use('/api/media', mediaRoutes);
+app.use('/api/media', mediaRoutes);
 
 // my middlewares
 app.use(errorHandler);
