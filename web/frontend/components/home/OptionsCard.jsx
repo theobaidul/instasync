@@ -1,6 +1,6 @@
 import { AlphaCard, FormLayout, Text, TextField, Select, Button, Form } from '@shopify/polaris';
 import options from './options.json';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuthenticatedFetch } from '@/hooks';
 import { useUpdateOptionsMutation } from '../../redux/features/feedOption/feedOptionApi.js';
 
@@ -53,7 +53,7 @@ export default function OptionsCard({ initialOption }) {
                         onChange={(value) => setTitle(value)}
                         autoComplete="off"
                     />
-                    <FormLayout.Group>
+                    <FormLayout.Group condensed>
                         <Select
                             label="Layout"
                             value={layout}
@@ -67,7 +67,7 @@ export default function OptionsCard({ initialOption }) {
                             options={postSizingOptions}
                         />
                     </FormLayout.Group>
-                    <FormLayout.Group>
+                    <FormLayout.Group condensed>
                         <Select
                             label="Post Spacing"
                             value={postSpacing}
@@ -87,7 +87,7 @@ export default function OptionsCard({ initialOption }) {
                         onChange={(value) => setConfiguration(value)}
                         options={configurationOptions}
                     />
-                    <FormLayout.Group>
+                    <FormLayout.Group condensed>
                         <TextField
                             label="Number of Rows"
                             type="number"
@@ -96,6 +96,7 @@ export default function OptionsCard({ initialOption }) {
                             autoComplete="off"
                         />
                         <TextField
+                            max={12}
                             label="Number of Columns"
                             type="number"
                             value={columns}

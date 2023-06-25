@@ -1,0 +1,10 @@
+.horizontalStack {
+    display: flex;
+    gap: var(--p-space-4);
+}
+.optionsCard {
+    flex: 1.2;
+}
+.feedPreview {
+    flex: 1.8;
+}

@@ -1,0 +1,14 @@
+.mediaContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--p-space-1);
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+}
+.mediaItem {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}

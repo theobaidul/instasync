@@ -3,4 +3,7 @@ export { default as AuthorizeCard } from './home/AuthorizeCard';
 export { default as FeedLayout } from './home/FeedLayout';
 export { default as OptionsCard } from './home/OptionsCard';
 export { default as FeedPreview } from './home/FeedPreview';
+export { default as MediaGrid } from './home/MediaGrid';
+export { default as CustomeLoading } from './global/ui/CustomeLoading';
+export { default as Error } from './global/ui/Error';
 export * from './providers';

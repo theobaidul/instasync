@@ -1,30 +1,31 @@
-import { Frame, HorizontalGrid, Layout, Loading, Page } from '@shopify/polaris';
-import { FeedPreview, OptionsCard } from '../index';
+import { HorizontalGrid, HorizontalStack, Layout, Page, Text } from '@shopify/polaris';
+import { FeedPreview, OptionsCard, CustomeLoading, Error } from '../index.js';
 import { useAuthenticatedFetch } from '@/hooks';
 import { useGetOptionsQuery } from '../../redux/features/feedOption/feedOptionApi.js';
+import { FeedLayoutStyles as Styles } from '../../assets';
 
 export default function FeedLayout() {
     const appQuery = useAuthenticatedFetch();
-    const { data: initialOption, isLoading, isError } = useGetOptionsQuery({ appQuery });
+    const { data: initialOption, isLoading, isError, error } = useGetOptionsQuery({ appQuery });
 
     // decide what to render
     let content = null;
     if (isLoading) {
-        content = (
-            <Frame>
-                <Loading />
-            </Frame>
-        );
+        content = <CustomeLoading />;
     } else if (isError) {
-        content = <div>something went wrong</div>;
+        content = <Error error={error} />;
     } else {
         content = (
             <Layout>
                 <Layout.Section>
-                    <HorizontalGrid gap="4" columns={2}>
-                        <OptionsCard initialOption={initialOption} />
-                        <FeedPreview />
-                    </HorizontalGrid>
+                    <div className={Styles.horizontalStack}>
+                        <div className={Styles.optionsCard}>
+                            <OptionsCard initialOption={initialOption} />
+                        </div>
+                        <div className={Styles.feedPreview}>
+                            <FeedPreview />
+                        </div>
+                    </div>
                 </Layout.Section>
             </Layout>
         );

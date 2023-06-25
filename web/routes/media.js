@@ -13,7 +13,8 @@ route.get('/', async (_req, res, next) => {
 
         // if access token found get media from instagram
         if (tokenInfo?.accessToken) {
-            const fields = 'id,caption,media_type,media_url,permalink,timestamp';
+            const fields =
+                'id,caption,media_type,media_url,thumbnail_url,permalink,is_shared_to_feed,timestamp';
             const url = `${process.env.INSTAGRAM_GRAPH_BASE_URL}/me/media?fields=${fields}&access_token=${tokenInfo.accessToken}`;
             const response = await axios.get(url);
             return res.json(response?.data);
